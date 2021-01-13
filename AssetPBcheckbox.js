@@ -1,7 +1,3 @@
-/*
-In the cart-template.liquid add:
-{% render 'planboo-bamboo' %}
-*/
 
 {% if linklists.planboo-bamboo.links.size > 0 and linklists.planboo-bamboo.links.first.type == 'product_link' %}
 
@@ -13,10 +9,6 @@ In the cart-template.liquid add:
 	For {{ linklists.planboo-bamboo.links.first.object.price | money }}
 	add a bamboo in your order to offset the shipping emissions with <a href="https://www.planboo.eco" target="_blank">Planboo</a>.
 	</label>
-  </p>
-  <p>
-	<label style="display:block" for="bamboo-note">Bamboo name (free and optional):</label>
-	<textarea name="attributes[bamboo-note]" id="bamboo-note">{{ cart.attributes.bamboo-note }}</textarea>
   </p>
 </div>
 
