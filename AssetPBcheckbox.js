@@ -60,7 +60,7 @@ fetch('/cart/update.js', request)
 }
 
 // If we have a bamboo item in the cart but our planboo-bamboo cart attribute has not been set.
-{% elsif bamboo_wraps_in_cart > 0 and cart.attributes.planboo-bamboo == blank  %}
+{% if bamboo_wraps_in_cart > 0 and cart.attributes.planboo-bamboo == blank  %}
 document.addEventListener("DOMContentLoaded", function(){
 Shopify.Cart.Bamboo.set();
 });
