@@ -59,16 +59,6 @@ fetch('/cart/update.js', request)
 });
 }
 
-// If we have nothing but bamboo items in the cart.
-{% if cart.items.size == 1 and bamboo_wraps_in_cart > 0 %}
-document.addEventListener("DOMContentLoaded", function(){
-Shopify.Cart.Bamboo.remove();
-});
-// If we have more than one bamboo item in the cart.
-{% elsif bamboo_wraps_in_cart > 1 %}
-document.addEventListener("DOMContentLoaded", function(){
-Shopify.Cart.Bamboo.set();
-});
 // If we have a bamboo item in the cart but our planboo-bamboo cart attribute has not been set.
 {% elsif bamboo_wraps_in_cart > 0 and cart.attributes.planboo-bamboo == blank  %}
 document.addEventListener("DOMContentLoaded", function(){
