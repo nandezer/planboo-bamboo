@@ -6,8 +6,7 @@
 
 	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
-	For {{ linklists.planboo-bamboo.links.first.object.price | money }}
-	add a bamboo in your order to offset the shipping emissions with <a href="https://www.planboo.eco" target="_blank">Planboo</a>.
+	Plant a bamboo with <a href="https://www.planboo.eco" target="_blank">Planboo</a> (+{{ linklists.planboo-bamboo.links.first.object.price | money }}).
 	</label>
   </p>
 </div>
