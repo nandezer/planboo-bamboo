@@ -99,9 +99,4 @@ document.querySelector('#bamboo-note').addEventListener("change", function(evt) 
 
 {% else %}
 
-<p style="clear: left; margin: 30px 0" class="rte">
-There has been an error, please contact Planboo
-<a href="https:www.planboo.eco" target="_blank" rel="noopener noreferrer nofollow">here</a>.
-</p>
-
 {% endif %}
