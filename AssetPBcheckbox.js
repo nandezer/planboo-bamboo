@@ -1,65 +1,6 @@
 
 {% if linklists.planboo-bamboo.links.size > 0 and linklists.planboo-bamboo.links.first.type == 'product_link' %}
 
-<!-- Accordion Snippet by shopifya.com--><style><!--
-.so-tab {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  margin: 25px 0;
-}
-.so-tab label {
-  position: relative;
-  display: block;
-  padding: 0 25px 0 0;
-  margin-bottom: 15px;
-  line-height: normal;
-  cursor: pointer;
-  font-weight: bold;
-}
-.so-tab input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-.so-tab-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .35s;
-}
-/* :checked */
-.so-tab input:checked ~ .so-tab-content {
-	max-height: none;	
-}
-/* Icon */
-.so-tab label::after {
-  position: absolute;
-  right: -5px;
-  top: -20px;
-  display: block;
-  width: 3em;
-  height: 3em;
-  line-height: 3;
-  text-align: center;
-  -webkit-transition: all .35s;
-  -o-transition: all .35s;
-  transition: all .35s;
-}
-.so-tab input[type=checkbox] + label::after {
-	content: "+";
-}
-.so-tab input[type=radio] + label::after {
-	content: "\25BC";
-}
-.so-tab input[type=checkbox]:checked + label::after {
-	transform: rotate(315deg);
-}
-.so-tab input[type=radio]:checked + label::after {
-	transform: rotateX(180deg);
-}
---></style>
-
-
 <div id="is-a-bamboo" style="clear: left; margin: 30px 0" class="clearfix rte">
   <p>
 
@@ -69,21 +10,6 @@
 	</label>
   </p>
 </div>
-
-<div class="so-accordion-wrapper">
-<div class="so-tab">
-  <input id="so-tab-1" type="checkbox" name="tabs" /> 
-  <label for="so-tab-1">Why Planboo?</label>
-  <div class="so-tab-content">
-    <a>Plant bamboo and follow its growth</a>
-    <br>
-    <a>Absorb 3x the emissions of shipping</a> 
-    <br>
-    <a>Empower rural communities and restore land</a> 
-  </div>
-</div>
-</div>
-
 {% assign id = linklists.planboo-bamboo.links.first.object.variants.first.id %}
 
 {% assign bamboo_wraps_in_cart = 0 %}
