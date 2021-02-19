@@ -2,13 +2,12 @@
 .so-tab {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  margin: 15px 0;
+  margin:15px 0 0 0;
 }
 .so-tab label {
   position: relative;
   display: block;
-  padding: 0 25px 0 0;
+  padding: 0 25px 0 25px;
   margin-bottom: 5px;
   line-height: normal;
   cursor: pointer;
@@ -18,8 +17,8 @@
 .so-tab a {
   position: relative;
   display: block;
-  line-height: normal;
-  font-size: 0.75em;
+  padding: 0 0 0 25px;
+  font-size: 0.85em;
 }
 .so-tab input {
   position: absolute;
@@ -56,8 +55,8 @@
   <input id="so-tab" type="checkbox"/> 
   <label for="so-tab">Why Planboo?</label>
   <div class="so-tab-content">
-    <a>• Plant bamboo and follow its growth.</a>
-    <a>• Absorb 3x the emissions of shipping.</a>
-    <a>• Empower rural communities and restore land.</a>
+    <a>• Plant bamboo to capture CO2</a>
+    <a>• Support smallholder farmers to regenerate land</a>
+    <a>• Follow your climate action using our digital tools</a>
   </div>
 </div>
