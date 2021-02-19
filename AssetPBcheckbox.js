@@ -1,15 +1,15 @@
 
 {% if linklists.planboo-bamboo.links.size > 0 and linklists.planboo-bamboo.links.first.type == 'product_link' %}
 
-<div id="is-a-bamboo" style="clear: left; margin: 30px 0" class="clearfix rte">
-  <p>
 
-	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
-	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
-	<a href="https://www.planboo.eco" target="_blank">Planboo</a> for carbon negative delivery +{{ linklists.planboo-bamboo.links.first.object.price | money }}.
+<div id="is-a-bamboo" style="clear: left; margin: 0px 10px 0px 30px" class="clearfix rte">
+	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="no" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
+	<label for="planboo-bamboo" style="display:inline; padding-left: 0px; float: none;">
+		<a href="https://www.planboo.eco" target="_blank">Planboo</a> for a carbon negative delivery +{{ linklists.planboo-bamboo.links.first.object.price | money }}.
 	</label>
-  </p>
 </div>
+
+
 {% assign id = linklists.planboo-bamboo.links.first.object.variants.first.id %}
 
 {% assign bamboo_wraps_in_cart = 0 %}
@@ -39,7 +39,7 @@ var request = {
 };
 fetch('/cart/update.js', request)
 .then(function() {
-  location.href = '/cart';
+	location.reload()
 });
 }
 
@@ -49,25 +49,14 @@ var headers = new Headers({ 'Content-Type': 'application/json' });
 var request = {
   method: 'POST',
   headers: headers,
-  body: JSON.stringify({ updates: { {{ id }}: 0 }, attributes: { 'planboo-bamboo': '', 'Bamboo-note': '' } })
+  body: JSON.stringify({ updates: { {{ id }}: 0 }, attributes: { 'planboo-bamboo': '' } })
 };
 fetch('/cart/update.js', request)
 .then(function() {
-  location.href = '/cart';
+	location.reload()
 });
 }
 
-// If we have a bamboo item in the cart but our planboo-bamboo cart attribute has not been set.
-{% if bamboo_wraps_in_cart > 0 and cart.attributes.planboo-bamboo == blank  %}
-document.addEventListener("DOMContentLoaded", function(){
-Shopify.Cart.Bamboo.set();
-});
-// If we have no bamboo item in the cart but our planboo-bamboo cart attribute has been set.
-{% elsif bamboo_wraps_in_cart == 0 and cart.attributes.planboo-bamboo != blank  %}
-document.addEventListener("DOMContentLoaded", function(){
-Shopify.Cart.Bamboo.set();
-});
-{% endif %}
 
 // When the planboo-bamboo checkbox is checked or unchecked.
 document.addEventListener("DOMContentLoaded", function(){
