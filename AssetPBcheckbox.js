@@ -4,11 +4,10 @@
 
 <div id="is-a-bamboo" style="clear: left; margin: 0px 10px 0px 30px" class="clearfix rte">
 	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="no" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
-	<label for="planboo-bamboo" style="display:inline; padding-left: 0px; float: none;">
-		<a href="https://www.planboo.eco" target="_blank">Planboo</a> for a carbon negative delivery +{{ linklists.planboo-bamboo.links.first.object.price | money }}.
+	<label for="planboo-bamboo" style="display:inline; float: none;">
+		Carbon negative delivery with <a href="https://www.planboo.eco" target="_blank">Planboo.</a> +{{ linklists.planboo-bamboo.links.first.object.price | money }}
 	</label>
 </div>
-
 
 {% assign id = linklists.planboo-bamboo.links.first.object.variants.first.id %}
 
