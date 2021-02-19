@@ -53,13 +53,11 @@
 --></style>
 
 <div class="so-tab">
-  <input id="so-tab-1" type="checkbox"/> 
-  <label for="so-tab-1">Why Planboo?</label>
+  <input id="so-tab" type="checkbox"/> 
+  <label for="so-tab">Why Planboo?</label>
   <div class="so-tab-content">
     <a>• Plant bamboo and follow its growth.</a>
-   
     <a>• Absorb 3x the emissions of shipping.</a>
-    
     <a>• Empower rural communities and restore land.</a>
   </div>
 </div>
