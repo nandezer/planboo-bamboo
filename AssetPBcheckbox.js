@@ -8,15 +8,9 @@
 		Carbon negative delivery with <a href="https://www.planboo.eco" target="_blank">Planboo.</a> +{{ linklists.planboo-bamboo.links.first.object.price | money }}
 	</label>
 </div>
+{% render 'why-planboo' %}
 
 {% assign id = linklists.planboo-bamboo.links.first.object.variants.first.id %}
-
-{% assign bamboo_wraps_in_cart = 0 %}
-{% for item in cart.items %}
-{% if item.id == id %}
-  {% assign bamboo_wraps_in_cart = item.quantity %}
-{% endif %}
-{% endfor %}
 
 <style>
 #updates_{{ id }} { display: none; }
@@ -38,7 +32,7 @@ var request = {
 };
 fetch('/cart/update.js', request)
 .then(function() {
-	location.reload();
+	//location.reload();
 });
 }
 
@@ -52,7 +46,7 @@ var request = {
 };
 fetch('/cart/update.js', request)
 .then(function() {
-	location.reload();
+	//location.reload();
 });
 }
 
