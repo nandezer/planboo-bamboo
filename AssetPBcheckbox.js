@@ -60,29 +60,16 @@
 --></style>
 
 
-<div id="is-a-bamboo" style="clear: left; margin: 30px 0" class="clearfix rte">
+<div id="is-a-bamboo" style="clear: left; margin: 0 25px 0 25px" class="clearfix rte">
   <p>
 
 	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
-	<a href="https://www.planboo.eco" target="_blank">Planboo</a> for carbon negative delivery +{{ linklists.planboo-bamboo.links.first.object.price | money }}.
+	+{{ linklists.planboo-bamboo.links.first.object.price | money }} for climate friendly delivery.
 	</label>
   </p>
 </div>
-
-<div class="so-accordion-wrapper">
-<div class="so-tab">
-  <input id="so-tab-1" type="checkbox" name="tabs" /> 
-  <label for="so-tab-1">Why Planboo?</label>
-  <div class="so-tab-content">
-    <a>Plant bamboo and follow its growth</a>
-    <br>
-    <a>Absorb 3x the emissions of shipping</a> 
-    <br>
-    <a>Empower rural communities and restore land</a> 
-  </div>
-</div>
-</div>
+{% render 'why-planboo' %}
 
 {% assign id = linklists.planboo-bamboo.links.first.object.variants.first.id %}
 
@@ -113,7 +100,7 @@ var request = {
 };
 fetch('/cart/update.js', request)
 .then(function() {
-  location.href = '/cart';
+  location.reload();
 });
 }
 
@@ -127,7 +114,7 @@ var request = {
 };
 fetch('/cart/update.js', request)
 .then(function() {
-  location.href = '/cart';
+  location.reload();
 });
 }
 
