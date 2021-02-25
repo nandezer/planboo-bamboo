@@ -118,19 +118,7 @@ fetch('/cart/update.js', request)
 });
 }
 
-// If we have a bamboo item in the cart but our planboo-bamboo cart attribute has not been set.
-{% if bamboo_wraps_in_cart > 0 and cart.attributes.planboo-bamboo == blank  %}
-document.addEventListener("DOMContentLoaded", function(){
-Shopify.Cart.Bamboo.set();
-});
-// If we have no bamboo item in the cart but our planboo-bamboo cart attribute has been set.
-{% elsif bamboo_wraps_in_cart == 0 and cart.attributes.planboo-bamboo != blank  %}
-document.addEventListener("DOMContentLoaded", function(){
-Shopify.Cart.Bamboo.set();
-});
-{% endif %}
-
-// When the planboo-bamboo checkbox is checked or unchecked.
+ // When the planboo-bamboo checkbox is checked or unchecked.
 document.addEventListener("DOMContentLoaded", function(){
 document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("change", function(event) {
   if (event.target.checked) {
@@ -151,7 +139,7 @@ document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("
 <div id="is-a-bamboo" style="clear: left; margin: 5px 0" class="clearfix rte">
   <p>
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
-	   Please make sure Step 1 of the installation process is done correctly. 
+	   Please make sure Step 2 of the installation process is done correctly. 
       <br>
       If you have any questions <a href="mailto:grow@planboo.com" target="_blank">contact us</a>.
 	</label>
