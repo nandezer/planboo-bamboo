@@ -76,6 +76,18 @@ document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("
 
 </script>
 
+
+{% elsif linklists.planboo-bamboo.links.size > 0 and linklists.planboo-bamboo.links.first.type == 'product_link' and linklists.planboo-bamboo.links.first.object.variants.first.price == 0 %}
+
 {% else %}
+  <div id="is-a-bamboo" style="clear: left; margin: 5px 0" class="clearfix rte">	
+    <p>	
+      <label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">	
+         Please make sure Step 2 of the installation process is done correctly. 	
+        <br>	
+        If you have any questions <a href="mailto:grow@planboo.com" target="_blank">contact us</a>.	
+      </label>	
+    </p>	
+  </div>
 
 {% endif %}
