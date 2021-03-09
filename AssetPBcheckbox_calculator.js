@@ -7,7 +7,7 @@
 
 	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
-	I want to know my delivery emissions.
+	I want to know my delivery carbon footprint.
 	</label>
   </p>
 </div>
