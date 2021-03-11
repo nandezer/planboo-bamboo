@@ -1,24 +1,24 @@
 
-{% if linklists.planboo-bamboo.links.size > 0 and linklists.planboo-bamboo.links.first.type == 'product_link' and linklists.planboo-bamboo.links.first.object.variants.first.price >= 0 %}
+{% if linklists.planboo-calculator.links.size > 0 and linklists.planboo-calculator.links.first.type == 'product_link' and linklists.planboo-calculator.links.first.object.variants.first.price >= 0 %}
 
 
-<div id="is-a-bamboo" style="clear: left; margin: 0 25px 0 25px" class="clearfix rte">
+<div id="is-a-calculator" style="clear: left; margin: 0 25px 0 25px" class="clearfix rte">
   <p>
 
-	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
-	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
+	<input id="planboo-calculator" type="checkbox" name="attributes[planboo-calculator]" value="yes" {% if cart.attributes.planboo-calculator %} checked="checked"{% endif %} style="float: none" />
+	<label for="planboo-calculator" style="display:inline; padding-left: 5px; float: none;">
 	I want to know my delivery carbon footprint.
 	</label>
   </p>
 </div>
 {% render 'why-planboo' %}
 
-{% assign id = linklists.planboo-bamboo.links.first.object.variants.first.id %}
+{% assign id = linklists.planboo-calculator.links.first.object.variants.first.id %}
 
-{% assign bamboo_wraps_in_cart = 0 %}
+{% assign calculator_wraps_in_cart = 0 %}
 {% for item in cart.items %}
 {% if item.id == id %}
-  {% assign bamboo_wraps_in_cart = item.quantity %}
+  {% assign calculator_wraps_in_cart = item.quantity %}
 {% endif %}
 {% endfor %}
 
@@ -30,15 +30,15 @@
 
 Shopify.Cart = Shopify.Cart || {};
 
-Shopify.Cart.Bamboo = {};
+Shopify.Cart.Calculator = {};
 
-Shopify.Cart.Bamboo.set = function() {
+Shopify.Cart.Calculator.set = function() {
 var headers = new Headers({ 'Content-Type': 'application/json' });
 
 var request = {
   method: 'POST',
   headers: headers,
-  body: JSON.stringify({ updates: { {{ id }}: 1 }, attributes: { 'planboo-bamboo': true } })
+  body: JSON.stringify({ updates: { {{ id }}: 1 }, attributes: { 'planboo-calculator': true } })
 };
 fetch('/cart/update.js', request)
 .then(function() {
@@ -46,13 +46,13 @@ fetch('/cart/update.js', request)
 });
 }
 
-Shopify.Cart.Bamboo.remove = function() {
+Shopify.Cart.Calculator.remove = function() {
 var headers = new Headers({ 'Content-Type': 'application/json' });
 
 var request = {
   method: 'POST',
   headers: headers,
-  body: JSON.stringify({ updates: { {{ id }}: 0 }, attributes: { 'planboo-bamboo': '', 'Bamboo-note': '' } })
+  body: JSON.stringify({ updates: { {{ id }}: 0 }, attributes: { 'planboo-calculator': '', 'Calculator-note': '' } })
 };
 fetch('/cart/update.js', request)
 .then(function() {
@@ -60,13 +60,13 @@ fetch('/cart/update.js', request)
 });
 }
 
- // When the planboo-bamboo checkbox is checked or unchecked.
+ // When the planboo-calculator checkbox is checked or unchecked.
 document.addEventListener("DOMContentLoaded", function(){
-document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("change", function(event) {
+document.querySelector('[name="attributes[planboo-calculator]"]').addEventListener("change", function(event) {
   if (event.target.checked) {
-	Shopify.Cart.Bamboo.set();
+	Shopify.Cart.Calculator.set();
   } else {
-	Shopify.Cart.Bamboo.remove();
+	Shopify.Cart.Calculator.remove();
   }
 
 });
@@ -77,12 +77,12 @@ document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("
 </script>
 
 
-{% elsif linklists.planboo-bamboo.links.size > 0 and linklists.planboo-bamboo.links.first.type == 'product_link' and linklists.planboo-bamboo.links.first.object.variants.first.price < 0 %}
+{% elsif linklists.planboo-calculator.links.size > 0 and linklists.planboo-calculator.links.first.type == 'product_link' and linklists.planboo-calculator.links.first.object.variants.first.price < 0 %}
 
 {% else %}
-  <div id="is-a-bamboo" style="clear: left; margin: 5px 0" class="clearfix rte">	
+  <div id="is-a-calculator" style="clear: left; margin: 5px 0" class="clearfix rte">	
     <p>	
-      <label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">	
+      <label for="planboo-calculator" style="display:inline; padding-left: 5px; float: none;">	
          Please make sure Step 2 of the installation process is done correctly. 	
         <br>	
         If you have any questions <a href="mailto:grow@planboo.com" target="_blank">contact us</a>.	
