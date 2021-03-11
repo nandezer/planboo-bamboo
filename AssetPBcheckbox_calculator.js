@@ -1,5 +1,5 @@
 
-{% if linklists.planboo-calculator.links.size > 0 and linklists.planboo-calculator.links.first.type == 'product_link' and linklists.planboo-calculator.links.first.object.variants.first.price >= 0 %}
+{% if linklists.planboo-calculator.links.size > 0 and linklists.planboo-calculator.links.first.type == 'product_link' and linklists.planboo-calculator.links.first.object.variants.first.price == 0 %}
 
 
 <div id="is-a-calculator" style="clear: left; margin: 0 25px 0 25px" class="clearfix rte">
@@ -77,7 +77,7 @@ document.querySelector('[name="attributes[planboo-calculator]"]').addEventListen
 </script>
 
 
-{% elsif linklists.planboo-calculator.links.size > 0 and linklists.planboo-calculator.links.first.type == 'product_link' and linklists.planboo-calculator.links.first.object.variants.first.price < 0 %}
+{% elsif linklists.planboo-calculator.links.size > 0 and linklists.planboo-calculator.links.first.type == 'product_link' and linklists.planboo-calculator.links.first.object.variants.first.price <> 0 %}
 
 {% else %}
   <div id="is-a-calculator" style="clear: left; margin: 5px 0" class="clearfix rte">	
