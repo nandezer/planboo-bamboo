@@ -42,7 +42,7 @@ var request = {
 };
 fetch('/cart/update.js', request)
 .then(function() {
-  //location.reload();
+  location.reload();
 });
 }
 
@@ -56,7 +56,7 @@ var request = {
 };
 fetch('/cart/update.js', request)
 .then(function() {
-  //location.reload();
+  location.reload();
 });
 }
 
