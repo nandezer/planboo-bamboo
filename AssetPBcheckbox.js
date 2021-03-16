@@ -7,7 +7,7 @@
 
 	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
-	+{{ linklists.planboo-bamboo.links.first.object.price | money }} for climate friendly delivery.
+	Climate friendly delivery
 	</label>
   </p>
 </div>
@@ -66,7 +66,10 @@ Shopify.Cart.Bamboo.remove = function() {
 
 // When the planboo-bamboo checkbox is checked or unchecked.
 document.addEventListener("click", function(){
+  console.log("event listener");
   document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("change", function(event) {
+     console.log("Checkbox clicked");
+    console.log(event);
     if (event.target.checked) {
       Shopify.Cart.Bamboo.set();
     } else {
