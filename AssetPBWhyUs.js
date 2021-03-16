@@ -7,7 +7,7 @@
 .so-tab label {
   position: relative;
   display: block;
-  padding: 0 25px 0 25px;
+  padding: 0 0 0 0;
   margin-bottom: 5px;
   line-height: normal;
   cursor: pointer;
@@ -32,7 +32,8 @@
 }
 /* :checked */
 .so-tab input:checked ~ .so-tab-content {
-	max-height: none;	
+	max-height: none;
+	margin:0 0 0 0;
 }
 /* Icon */
 .so-tab label::after {
