@@ -2,10 +2,10 @@
 {% if linklists.planboo-bamboo.links.size > 0 and linklists.planboo-bamboo.links.first.type == 'product_link' and linklists.planboo-bamboo.links.first.object.variants.first.price > 0 %}
 
 
-<div id="is-a-bamboo" style="clear: left; margin: 0 25px 0 25px" class="clearfix rte">
+<div id="is-a-bamboo" style="clear: left; margin: 0 0 0 0" class="clearfix rte">
   <p>
 
-	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" {% if cart.attributes.planboo-bamboo %} value="yes" checked="checked"{% endif %} style="float: none" />
+	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
 	+{{ linklists.planboo-bamboo.links.first.object.price | money }} for climate friendly delivery.
 	</label>
@@ -33,45 +33,48 @@ Shopify.Cart = Shopify.Cart || {};
 Shopify.Cart.Bamboo = {};
 
 Shopify.Cart.Bamboo.set = function() {
-var headers = new Headers({ 'Content-Type': 'application/json' });
-
-var request = {
-  method: 'POST',
-  headers: headers,
-  body: JSON.stringify({ updates: { {{ id }}: 1 }, attributes: { 'planboo-bamboo': true } })
-};
-fetch('/cart/update.js', request)
-.then(function() {
-  //location.reload();
-});
+  var headers = new Headers({ 'Content-Type': 'application/json' });
+  
+  console.log("SET");
+  
+  var request = {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({ updates: { {{ id }}: 1 }, attributes: { 'planboo-bamboo': true } })
+  };
+  fetch('/cart/update.js', request)
+  .then(function() {
+    //location.reload();
+  });
 }
 
 Shopify.Cart.Bamboo.remove = function() {
-var headers = new Headers({ 'Content-Type': 'application/json' });
+  var headers = new Headers({ 'Content-Type': 'application/json' });
 
-var request = {
-  method: 'POST',
-  headers: headers,
-  body: JSON.stringify({ updates: { {{ id }}: 0 }, attributes: { 'planboo-bamboo': '', 'Bamboo-note': '' } })
-};
-fetch('/cart/update.js', request)
-.then(function() {
-  //location.reload();
-});
+  console.log("Remove");
+  
+  var request = {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ updates: { {{ id }}: 0 }, attributes: { 'planboo-bamboo': '' } })
+  };
+  fetch('/cart/update.js', request)
+  .then(function() {
+    //location.reload();
+  });
 }
 
- // When the planboo-bamboo checkbox is checked or unchecked.
-document.addEventListener("DOMContentLoaded", function(){
-document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("change", function(event) {
-  if (event.target.checked) {
-	Shopify.Cart.Bamboo.set();
-  } else {
-	Shopify.Cart.Bamboo.remove();
-  }
+// When the planboo-bamboo checkbox is checked or unchecked.
+document.addEventListener("click", function(){
+  document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("change", function(event) {
+    if (event.target.checked) {
+      Shopify.Cart.Bamboo.set();
+    } else {
+      Shopify.Cart.Bamboo.remove();
+    }
 
-});
-
-
+  });
+  
 });
 
 </script>
