@@ -2,7 +2,7 @@
 .so-tab {
   position: relative;
   width: 100%;
-  margin:15px 0 0 0;
+  margin:0 0 0 0;
 }
 .so-tab label {
   position: relative;
@@ -54,10 +54,10 @@
 
 <div class="so-tab">
   <input id="so-tab" type="checkbox"/> 
-  <label for="so-tab">Why Planboo?</label>
+  <label for="so-tab">with Planboo</label>
   <div class="so-tab-content">
     <a>• Plant bamboo to capture CO2</a>
-    <a>• Support smallholder farmers to regenerate land</a>
-    <a>• Follow your climate action using our digital tools</a>
+    <a>• Support smallholder farmers</a>
+    <a>• Follow your climate action</a>
   </div>
 </div>
