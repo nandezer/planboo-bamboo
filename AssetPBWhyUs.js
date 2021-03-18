@@ -2,7 +2,7 @@
 .so-tab {
   position: relative;
   width: 100%;
-  margin:0 0 0 0;
+  margin:15px 0 0 0;
 }
 .so-tab label {
   position: relative;
