@@ -2,7 +2,7 @@
 {% if linklists.planboo-bamboo.links.size > 0 and linklists.planboo-bamboo.links.first.type == 'product_link' and linklists.planboo-bamboo.links.first.object.variants.first.price > 0 %}
 
 
-<div id="is-a-bamboo" style="clear: left; margin: 0 0 0 0" class="clearfix rte">
+<div id="is-a-bamboo" style="clear: left; margin: 15px 0 0 0" class="clearfix rte">
   <p>
 
 	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
