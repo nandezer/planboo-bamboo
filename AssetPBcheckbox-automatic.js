@@ -18,22 +18,27 @@ Shopify.Cart = Shopify.Cart || {};
 
 Shopify.Cart.Bamboo = {};
 
-Shopify.Cart.Bamboo.setCreationAttribute = function() {
-  
+Shopify.Cart.Bamboo.setCreationAttribute = function() { 
   var headers = new Headers({ 'Content-Type': 'application/json' });
   
   console.log("Creation attribute set");
   
-  var request = {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify({ updates: { {{ id }}: 1 }, attributes: { 'planboo-create': true, 'planboo-bamboo': true } })
-
-  };
-  fetch('/cart/update.js', request)
-  .then(function() {
-    //location.reload();
-  });
+  let formData = { updates: { {{ id }}: 1 }, attributes: { 'planboo-bamboo': 'true', 'planboo-create' : 'true'} };
+  
+ fetch('/cart/update.js', {
+   method: 'POST',
+   headers: headers,
+   body: JSON.stringify(formData)
+ })
+ .then(response => {
+    console.log("succes creation added");
+   	
+   	return response.json();
+   
+ })
+ .catch((error) => {
+   console.error('Error:', error);
+ });
 }
 
 Shopify.Cart.Bamboo.removeCreationAttribute = function() {
@@ -41,47 +46,79 @@ Shopify.Cart.Bamboo.removeCreationAttribute = function() {
   
   console.log("Creation attribute removed");
   
-  var request = {
-      method: 'POST',
-      headers: headers,
-    body: JSON.stringify({ attributes: { 'planboo-create': '', 'planboo-bamboo' : ''} })
-  };
-  fetch('/cart/update.js', request)
-  .then(function() {
-    //location.reload();
-  });
+  let formData = {attributes: { 'planboo-bamboo': '', 'planboo-create': ''} };
+  
+ fetch('/cart/update.js', {
+   method: 'POST',
+   headers: headers,
+   body: JSON.stringify(formData)
+ })
+ .then(response => {
+    console.log("succes creation removal");
+   return response.json();
+ })
+ .catch((error) => {
+   console.error('Error:', error);
+ });
 }
 
 Shopify.Cart.Bamboo.set = function() {
-  var headers = new Headers({ 'Content-Type': 'application/json' });
+    var headers = new Headers({ 'Content-Type': 'application/json' });
   
-  var request = {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify({ updates: { {{ id }}: 1 }, attributes: { 'planboo-bamboo': true } })
-  };
-  fetch('/cart/update.js', request)
-  .then(function() {
-    //location.reload();
-  });
+    console.log("Add bamboo product");
+
+    let formData = { updates: { {{ id }}: 1 }, attributes: { 'planboo-bamboo': 'true'} };
+
+   fetch('/cart/update.js', {
+     method: 'POST',
+     headers: headers,
+     body: JSON.stringify(formData)
+   })
+   .then(response => {
+     console.log("succes added");
+     
+     return response.json();
+   })
+   .catch((error) => {
+     console.error('Error:', error);
+   });
 }
 
 Shopify.Cart.Bamboo.remove = function() {
   var headers = new Headers({ 'Content-Type': 'application/json' });
   
-  var request = {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ updates: { {{ id }}: 0 }, attributes: { 'planboo-bamboo': '' } })
-  };
-  fetch('/cart/update.js', request)
-  .then(function() {
-    //location.reload();
-  });
+  console.log("remove bamboo product");
+  
+  
+ let formData = { updates: { {{ id }}: 0 }, attributes: { 'planboo-bamboo': ''} };
+  
+ fetch('/cart/update.js', {
+   method: 'POST',
+   headers: headers,
+   body: JSON.stringify(formData)
+ })
+ .then(response => {
+    console.log("succes removal");
+   	
+   return response.json();
+ })
+ .catch((error) => {
+   console.error('Error:', error);
+ });
 }
 </script>
 
 {% if cart.items.size == 0%}
+
+<div id="is-a-bamboo" style="clear: left; margin: 0 0 0 0" class="clearfix rte">
+  <p>
+	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" checked="checked" style="float: none" />
+	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
+	Climate friendly delivery
+	</label>
+  </p>
+</div>
+{% render 'why-planboo' %}
 
 <style>
 #updates_{{ id }} { display: none; }
@@ -90,9 +127,28 @@ Shopify.Cart.Bamboo.remove = function() {
   
 <script>
 
-//if cart is empty remove the attribute of planboo-create
+ 
+//if cart has been recently emptied out
+{% if cart.attributes.planboo-create != blank %}  
 document.addEventListener("DOMContentLoaded", function(){
   Shopify.Cart.Bamboo.removeCreationAttribute();
+});
+  
+{% endif %}
+  
+  
+document.addEventListener("click", function(){  
+  // When the planboo-bamboo checkbox is checked or unchecked.
+  console.log("click");
+  document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("change", function(event) {
+    if (event.target.checked) {
+      Shopify.Cart.Bamboo.set();
+    } else {
+      Shopify.Cart.Bamboo.remove();
+    }
+
+  });  
+   
 });
   
 
@@ -145,16 +201,13 @@ window.XMLHttpRequest.prototype.open = openReplacement;
 
 
 {% elsif planbooProduct.variants.first.price >= 0 and cart.items.size > 0 %}
-
-
 <div id="is-a-bamboo" style="clear: left; margin: 0 0 0 0" class="clearfix rte">
   <p>
-
 	
+     <input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" {% if cart.attributes.planboo-bamboo %} value="yes" checked="checked"{% endif %} style="float: none" />
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
 	Climate friendly delivery
 	</label>
-    <input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" {% if cart.attributes.planboo-bamboo %} checked="checked"{% endif %} style="float: none" />
   </p>
 </div>
 {% render 'why-planboo' %}
@@ -166,20 +219,18 @@ window.XMLHttpRequest.prototype.open = openReplacement;
   document.addEventListener("DOMContentLoaded", function(){    
 	Shopify.Cart.Bamboo.setCreationAttribute();
   });
-
-//comment this if statement if don't want to add bamboo automatically at cart creation 
 {% endif %}
   
 // If we have a planboo-bamboo item in the cart but our planboo-bamboo cart attribute has not been set.
 {% if bamboo_wraps_in_cart > 0 and cart.attributes.planboo-bamboo == blank  %}
     document.addEventListener("DOMContentLoaded", function(){
-      console.log("add bamboo check");
-      Shopify.Cart.Bamboo.set();
+      console.log("remove bamboo check 1");
+      Shopify.Cart.Bamboo.remove();
   });
   // If we have no planboo-bamboo item in the cart but our planboo-bamboo cart attribute has been set.
 {% elsif bamboo_wraps_in_cart == 0 and cart.attributes.planboo-bamboo != blank  %}
   document.addEventListener("DOMContentLoaded", function(){
-    console.log("remove bamboo check");
+    console.log("remove bamboo check 2");
     Shopify.Cart.Bamboo.remove();
   });
 
@@ -187,11 +238,14 @@ window.XMLHttpRequest.prototype.open = openReplacement;
 
 document.addEventListener("click", function(){  
   // When the planboo-bamboo checkbox is checked or unchecked.
+  console.log("click");
   document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("change", function(event) {
     if (event.target.checked) {
       Shopify.Cart.Bamboo.set();
+      
     } else {
       Shopify.Cart.Bamboo.remove();
+      
     }
 
   });  
@@ -218,7 +272,7 @@ function openReplacement() {
     ) {
         console.log("update/change");
         const cartObjUpdate1 = JSON.parse(this.response);
-        //console.log(cartObj);
+        console.log(cartObjUpdate1);
         if(cartObjUpdate1.attributes["planboo-create"] == "true" & cartObjUpdate1.item_count == 0){
       		Shopify.Cart.Bamboo.removeCreationAttribute();
     	}
