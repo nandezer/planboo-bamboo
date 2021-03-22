@@ -1,14 +1,12 @@
 <!-- Accordion Snippet by shopifya.com--><style><!--
 .so-tab {
   position: relative;
-  width: 100%;
-  margin:15px 0 0 0;
+  margin:0 0 0 20px;
 }
 .so-tab label {
   position: relative;
   display: block;
   padding: 0 0 0 0;
-  margin-bottom: 5px;
   line-height: normal;
   cursor: pointer;
   font-weight: bold;
@@ -37,18 +35,21 @@
 }
 /* Icon */
 .so-tab label::after {
-  position: absolute;
-  right: -5px;
-  top: -20px;
-  display: block;
-  width: 3em;
-  height: 3em;
-  line-height: 3;
+  display: inline-block;
+  line-height: normal;
   text-align: center;
   -webkit-transition: all .35s;
   -o-transition: all .35s;
   transition: all .35s;
 }
+.so-tab input[type=checkbox] + label::after {
+content: "+";
+margin:0 0 0 5px;
+}
+.so-tab input[type=checkbox]:checked + label::after {
+transform: rotate(315deg);
+}
+
 
 --></style>
 
