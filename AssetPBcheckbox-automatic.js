@@ -110,15 +110,14 @@ Shopify.Cart.Bamboo.remove = function() {
 
 {% if cart.items.size == 0%}
 
-<div id="is-a-bamboo" style="clear: left; margin: 0 0 0 0" class="clearfix rte">
-  <p>
+<div id="is-a-bamboo" style="clear: left; margin: 0 0 0 15px" class="clearfix rte">
 	<input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" checked="checked" style="float: none" />
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
 	Climate friendly delivery
 	</label>
-  </p>
+  {% render 'why-planboo' %}
 </div>
-{% render 'why-planboo' %}
+
 
 <style>
 #updates_{{ id }} { display: none; }
@@ -202,15 +201,13 @@ window.XMLHttpRequest.prototype.open = openReplacement;
 
 {% elsif planbooProduct.variants.first.price >= 0 and cart.items.size > 0 %}
 <div id="is-a-bamboo" style="clear: left; margin: 0 0 0 0" class="clearfix rte">
-  <p>
-	
      <input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" {% if cart.attributes.planboo-bamboo %} value="yes" checked="checked"{% endif %} style="float: none" />
 	<label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
 	Climate friendly delivery
 	</label>
-  </p>
+  {% render 'why-planboo' %}
 </div>
-{% render 'why-planboo' %}
+
 
 <script>
 
