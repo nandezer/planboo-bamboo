@@ -30,7 +30,6 @@
   Shopify.Cart.Bamboo.set = function() {
       var headers = new Headers({ 'Content-Type': 'application/json' });
 
-      console.log("Add bamboo product");
 
       let formData = { updates: { {{ id }}: 1 }, attributes: { 'planboo-bamboo': 'true'} };
 
@@ -40,7 +39,6 @@
        body: JSON.stringify(formData)
      })
      .then(response => {
-       console.log("succes added");
 
        return response.json();
      })
@@ -52,8 +50,6 @@
   Shopify.Cart.Bamboo.remove = function() {
     var headers = new Headers({ 'Content-Type': 'application/json' });
 
-    console.log("remove bamboo product");
-
 
    let formData = { updates: { {{ id }}: 0 }, attributes: { 'planboo-bamboo': ''} };
 
@@ -63,7 +59,6 @@
      body: JSON.stringify(formData)
    })
    .then(response => {
-      console.log("succes removal");
 
      return response.json();
    })
@@ -75,13 +70,11 @@
   // If we have a planboo-bamboo item in the cart but our planboo-bamboo cart attribute has not been set.
   {% if bamboo_wraps_in_cart > 0 and cart.attributes.planboo-bamboo == blank  %}
   document.addEventListener("DOMContentLoaded", function(){
-    console.log("remove bamboo check 1");
     Shopify.Cart.Bamboo.remove();
   });
   // If we have no planboo-bamboo item in the cart but our planboo-bamboo cart attribute has been set.
   {% elsif bamboo_wraps_in_cart == 0 and cart.attributes.planboo-bamboo != blank  %}
   document.addEventListener("DOMContentLoaded", function(){
-  	console.log("remove bamboo check 2");
     Shopify.Cart.Bamboo.remove();
   });
 
@@ -89,7 +82,6 @@
 
   document.addEventListener("click", function(){  
   // When the planboo-bamboo checkbox is checked or unchecked.
-  	console.log("click");
     document.querySelector('[name="attributes[planboo-bamboo]"]').addEventListener("change", function(event) {
       if (event.target.checked) {
           Shopify.Cart.Bamboo.set();
