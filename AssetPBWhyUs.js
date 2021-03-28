@@ -1,7 +1,7 @@
 <!-- Accordion Snippet by shopifya.com--><style><!--
 .so-tab {
   position: relative;
-  margin:0 0 0 20px;
+  margin:0 0 0 25px;
 }
 .so-tab label {
   position: relative;
@@ -43,11 +43,11 @@
   transition: all .35s;
 }
 .so-tab input[type=checkbox] + label::after {
-content: "+";
-margin:0 0 0 5px;
+content: "\2191";
+margin:0 0 0 2px;
 }
 .so-tab input[type=checkbox]:checked + label::after {
-transform: rotate(315deg);
+transform: rotate(180deg);
 }
 
 
