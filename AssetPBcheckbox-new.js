@@ -15,7 +15,7 @@
 
   <div id="is-a-bamboo" style="clear: left; margin: 0 0 0 0" class="clearfix rte">
     <input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" {% if cart.attributes.planboo-bamboo %} value="yes" checked="checked"{% endif %} style="float: none" />
-    <label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
+    <label for="planboo-bamboo" style="display:inline; float: none;">
       Climate friendly delivery
     </label>
     {% render 'why-planboo' %}
