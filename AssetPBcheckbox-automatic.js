@@ -103,7 +103,7 @@
     <div id="is-a-bamboo" style="clear: left; margin: 0 0 0 15px" class="clearfix rte">
         <input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" value="yes" checked="checked" style="float: none" />
         <label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
-        Climate friendly delivery
+        Climate friendly delivery (+{{planbooProduct.price | money }}).
         </label>
       {% render 'why-planboo' %}
     </div>
@@ -185,7 +185,7 @@
     <div id="is-a-bamboo" style="clear: left; margin: 0 0 0 0" class="clearfix rte">
          <input id="planboo-bamboo" type="checkbox" name="attributes[planboo-bamboo]" {% if cart.attributes.planboo-bamboo %} value="yes" checked="checked"{% endif %} style="float: none" />
         <label for="planboo-bamboo" style="display:inline; padding-left: 5px; float: none;">
-        Climate friendly delivery
+        Climate friendly delivery (+{{planbooProduct.price | money }}).
         </label>
       {% render 'why-planboo' %}
     </div>
