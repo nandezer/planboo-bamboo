@@ -1,0 +1,108 @@
+<!-- Accordion Snippet by shopifya.com--><style>
+.so-tab {
+  position: relative;
+  margin:0 0 0 0;
+  
+}
+.so-tab label {
+  position: relative;
+  display: block;
+  padding: 0 0 5px 0;
+  line-height: normal;
+  font-weight: bold;
+}
+
+
+.so-tab input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.so-tab-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s;
+}
+/* :checked */
+.so-tab input:checked ~ .so-tab-content {
+	max-height: none;
+	margin:0 0 0 0;
+}
+/* Icon */
+.so-tab label::after {
+  display: inline-block;
+  line-height: normal;
+  text-align: center;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+}
+.so-tab input[type=checkbox] + label::after {
+content: "\2193";
+margin:0 0 0 2px;
+}
+.so-tab input[type=checkbox]:checked + label::after {
+transform: rotate(180deg);
+}
+
+
+ul.mybullet li {
+list-style-image:url('https://raw.githubusercontent.com/nandezer/planboo-bamboo/main/Leaf%2012x12px.png');
+font-size: 0.9em;
+}
+
+
+.flexWrap {
+  display: flex;
+  
+  width: 100%;
+}
+.flexCol {
+  box-sizing: border-box;
+  align-items: center;
+  padding: 0px 0px 0px 0px;
+  width: 33.3%;
+  
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .flexWrap { flex-wrap: wrap; }
+  .flexCol { width: 100%; }
+}
+  
+  
+  .imagebox {
+  width: 120px;
+  height: 120px
+  float: left;
+  
+}
+
+  
+  .textbox {
+  width: 100%;
+  float: right;
+  text-align: left;
+  padding: 0 0 0 5px;
+  
+}
+  
+
+
+</style>
+
+<div class="so-tab">
+  <input id="so-tab" type="checkbox"/> 
+  <label for="so-tab">with Planboo</label>
+  <div class="flexWrap">
+    <div class="flexCol imagebox">
+    <img src="https://raw.githubusercontent.com/nandezer/planboo-bamboo/main/IMG_9801.jpg"/>
+    </div>
+    <div class="flexCol textbox" >
+  <ul class="mybullet"> <li> Plant bamboo for climate action</li>
+    <li> Absorb CO2 from the atmosphere</li>
+    <li> Support smallholder farmers </li> </ul>
+    </div>
+  </div>
+</div>
